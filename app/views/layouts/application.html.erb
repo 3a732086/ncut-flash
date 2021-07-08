@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NcutFlash</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+      會展英文
+    </title>
+    <meta name="description" content="國立勤益科技大學應英系老師個人教學網站" />
+    <meta name="keywords" content="Bootstrap, 網站, 開發, 程式, 設計, 教學, jquery, HTML, HTML5, CSS, JavaScript, Swift, WordPress, iOS, Ruby On Rails, Arduino">
+    <meta name="copyright" content="國立勤益科技大學">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,6 +21,9 @@
   </head>
 
   <body>
+
+    <%= link_to "登入", user_session_path %>
+    <%= link_to "登出", destroy_user_session_path, method: :delete%>
     <%= yield %>
   </body>
 </html>
