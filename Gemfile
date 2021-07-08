@@ -37,6 +37,20 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+
+gem 'devise'
+gem 'devise-i18n'
+gem 'omniauth-facebook'
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem 'carrierwave'
+gem 'rails_admin'
+gem 'rails_admin-i18n'
+gem 'whenever', :require => false
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'pg'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
