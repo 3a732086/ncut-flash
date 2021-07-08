@@ -5,5 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
 
-  validates :name, presence: true
+  validates :name, :student_class, :role, presence: true
+  enum role: [:guest, :student, :admin]
+
+  has_many :user_infos
 end
