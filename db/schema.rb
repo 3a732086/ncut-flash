@@ -10,10 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_08_221439) do
+ActiveRecord::Schema.define(version: 2021_07_08_222124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "course_topics", force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "number"
+    t.string "eng_topic"
+    t.string "chi_topic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "inserted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ctrs", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "scenes"
+    t.datetime "inserted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quiz_scores", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "score"
+    t.integer "use_time"
+    t.string "fail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_infos", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "scenes"
+    t.string "topic"
+    t.string "input_data"
+    t.datetime "inserted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_infos_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
