@@ -1,0 +1,2 @@
+class Ctr < ApplicationRecord
+end
