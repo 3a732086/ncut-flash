@@ -8,5 +8,7 @@ class User < ApplicationRecord
   validates :name, :student_class, :role, presence: true
   enum role: [:guest, :student, :admin]
 
+  mount_uploader :avator, CoverImageUploader
+
   has_many :user_infos
 end
