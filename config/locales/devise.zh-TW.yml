@@ -118,6 +118,7 @@ zh-TW:
         update: 更新
         we_need_your_current_password_to_confirm_your_changes: 我們需要您的目前的密碼以確認您的更改
       new:
+        characters_minimum: 最少6個字元
         sign_up: 註冊
       signed_up: 註冊成功，歡迎！
       signed_up_but_inactive: 您已註冊成功。然而因為您的帳號尚未啓動，暫時無法登入，抱歉！
@@ -133,6 +134,14 @@ zh-TW:
       signed_in: 成功登入了。
       signed_out: 成功登出了。
     shared:
+      forget_password_link:
+        forgot_your_password: 忘記密碼?
+      log_in_link:
+        sign_in: 登入
+      sign_up:
+        sign_up: 註冊
+      facebook:
+        sign_in_with_provider: 用%{provider}登入
       links:
         back: 返回
         didn_t_receive_confirmation_instructions: 沒有收到確認信件？
