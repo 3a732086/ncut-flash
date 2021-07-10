@@ -1,0 +1,2 @@
+class FlashController < ApplicationController
+end
