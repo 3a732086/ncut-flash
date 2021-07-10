@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FlashControllerTest < ActionDispatch::IntegrationTest
+class FlashesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
