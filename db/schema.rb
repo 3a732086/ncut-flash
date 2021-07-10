@@ -20,16 +20,16 @@ ActiveRecord::Schema.define(version: 2021_07_09_222858) do
     t.integer "number"
     t.string "eng_topic"
     t.string "chi_topic"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.datetime "inserted_at"
     t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "ctrs", force: :cascade do |t|
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2021_07_09_222858) do
     t.text "Verb"
     t.text "Noun"
     t.text "Adjective"
+    t.text "Adverb"
     t.string "Count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

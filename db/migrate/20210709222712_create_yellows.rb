@@ -4,6 +4,7 @@ class CreateYellows < ActiveRecord::Migration[5.2]
       t.text :Verb
       t.text :Noun
       t.text :Adjective
+      t.text :Adverb
       t.string :Count
       t.timestamps
     end
