@@ -1,0 +1,5 @@
+<% @courses.each_with_index do |c, index| %>
+  <%= link_to flash_path(c) do %>
+    <%= c.name %><br>
+  <% end  %>
+<% end %>
