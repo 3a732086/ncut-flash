@@ -1,0 +1,37 @@
+<% @course_topics.each_with_index do |ct| %>
+  <%= ct.chi_topic %><br>
+<% end %>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <% if @page > @first_page %>
+      <li>
+        <%= link_to flash_path(page: (@page - 1)) do %>
+          <button class="page-link"  aria-hidden="true">上一題</button>
+        <% end %>
+      <li>
+    <% else %>
+      <li>
+        <%= link_to flash_path(page: (@page - 1)) do %>
+          <button class="page-link" disabled="disabled" aria-hidden="true">上一題</button>
+        <% end %>
+        <li>
+    <% end %>
+
+
+
+    <% if @page < @last_page %>
+      <li>
+        <%= link_to flash_path(page: (@page + 1)) do %>
+          <button class="page-link" aria-hidden="true">下一題</button>
+        <% end %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to flash_path(page: (@page + 1)) do %>
+          <button class="page-link" disabled="disabled" aria-hidden="true">下一題</button>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</nav>
