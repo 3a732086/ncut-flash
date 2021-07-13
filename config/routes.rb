@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   resources :flashes
 
+  resources :user_infos
 end
