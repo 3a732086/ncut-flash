@@ -22,13 +22,15 @@
 
 
   <div style="text-align:center">
-  <% if current_user && current_user.role == 'admin'  %>
-      <a type="button" href="" id="submit" class="btn btn-primary btn-block btn-lg mt-2">編輯課程</a>
-  <% elsif current_user && current_user.role == 'student'  %>
-      <a type="button" href="" id="submit" class="btn btn-primary btn-block btn-lg mt-2">開始</a>
-  <% else %>
-      <input type="text"  id="submit"  disabled="disabled" class="btn btn-primary btn-block btn-lg mt-2" value="請稍等老師為你開通帳號">
-  <% end %>
+    <% if current_user %>
+      <% if current_user && current_user.role == 'admin'  %>
+          <a type="button" href="" id="submit" class="btn btn-primary btn-block btn-lg mt-2">編輯課程</a>
+      <% elsif current_user && current_user.role == 'student'  %>
+          <a type="button" href="" id="submit" class="btn btn-primary btn-block btn-lg mt-2">開始</a>
+      <% else %>
+          <input type="text"  id="submit"  disabled="disabled" class="btn btn-primary btn-block btn-lg mt-2" value="請稍等老師為你開通帳號">
+      <% end %>
+    <% end %>
   </div>
 
 
