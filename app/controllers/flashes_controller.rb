@@ -1,4 +1,5 @@
 class FlashesController < ApplicationController
+  before_action :redirect_if_not_log_in
 
   LIMITED_QUESTION_NUMBER = 1  #每頁顯示一個問題
 
@@ -26,6 +27,18 @@ class FlashesController < ApplicationController
 
 
     @user_info = UserInfo.new
+  end
+
+
+
+  private
+
+  def redirect_if_not_log_in
+    if !current_user
+      flash[:notice] = "您尚未登入"
+      redirect_to root_path
+      return
+    end
   end
 
 
