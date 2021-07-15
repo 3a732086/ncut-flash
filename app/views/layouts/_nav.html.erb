@@ -8,9 +8,10 @@
     </div>
 
     <ul class="navbar-nav ml-sm-2">
-      <%= link_to '檢視所有資料', user_infos_path, class: "nav-link" %>
+
       <li class="nav-item">
         <% if current_user %>
+          <%= link_to '檢視所有資料', user_infos_path, class: "nav-link" %>
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               <%= current_user.name %> <span class="caret"></span>
