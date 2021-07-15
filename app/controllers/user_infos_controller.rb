@@ -2,7 +2,7 @@ class UserInfosController < ApplicationController
 
 
   def create
-    @user_info = UserInfo.create({
+    @user_info = UserInfo.create({         #學生填完答案後按繳交題目新增一筆資料
       user_id: current_user.id,
       scenes: params[:user_info][:scenes],
       topic: params[:user_info][:topic],
@@ -10,8 +10,11 @@ class UserInfosController < ApplicationController
       inserted_at: Time.now
     })
 
-    if !@user_info.valid?
-      flash[:alert] = "ERROR!!"
+
+    if !@user_info.valid?   #驗證寫入資料是否成功
+      flash[:alert] = "請輸入答案!!"
+      redirect_to "http://localhost:3000/flashes/#{params[:user_info][:scenes_id]}?page=#{params[:user_info][:topic]}"  #驗證不成功顯示錯誤訊息並導回同一題
+      return
     else
       flash[:notice] = "第#{params[:user_info][:topic]}題繳交成功!!"
     end
