@@ -19,9 +19,9 @@
                 <%= f.hidden_field :topic, value: params[:page] %>
               <% end %>
             <div class="textarea">
-              <%= f.text_area :input_data, class: "form-control", placeholder: "在此輸入英文句子", rows: 5, cols: 10  %>
+              <%= f.text_area :input_data, class: "form-control", placeholder: "在此輸入英文句子", rows: 5, cols: 10, id: "text_area"  %>
             </div>
-            <%= f.submit "繳交題目", class: "btn btn-outline-dark btn-lg mt-2" %>
+            <%= f.submit "繳交題目", class: "btn btn-outline-dark btn-lg mt-2", id: "submit1" %>
           </div>
         <% end %>
 
@@ -103,4 +103,17 @@
         window.location.replace("http://127.0.0.1:3000/flashes/"+course_id+"?page="+random_topic)
     }
 
+
+
+    $(document).ready(function (){
+        var textarea_value = $("#text_area")
+        $("#submit1").click( function (){
+           if (textarea_value.val().length > 0 ) {
+               alert("繳交成功!!")
+           }
+           else {
+               alert("請輸入答案!!")
+           }
+        })
+    })
 </script>
