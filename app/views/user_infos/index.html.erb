@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="table-responsive">
+    <table id="zero_config" class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Scenes</th>
+        <th>Number</th>
+        <th>Data</th>
+        <th>Insert_time</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @user_data.each_with_index do |user, index|  %>
+          <tr>
+            <td><%= current_user.name %></td>
+            <td><%= user.scenes %></td>
+            <td><%= user.topic %></td>
+            <td><%= user.input_data %></td>
+            <td><%= user.inserted_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="/js/datatables.min.js"></script>
+<script>
+    /****************************************
+     *       Basic Table                   *
+     ****************************************/
+    $('#zero_config').DataTable();
+
+</script>
