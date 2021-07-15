@@ -1,6 +1,11 @@
 class UserInfosController < ApplicationController
 
 
+  def index
+    @user_data = UserInfo.where(:user_id => current_user.id)
+  end
+
+
   def create
     @user_info = UserInfo.create({         #學生填完答案後按繳交題目新增一筆資料
       user_id: current_user.id,
@@ -29,7 +34,6 @@ class UserInfosController < ApplicationController
     end
 
     redirect_to "http://localhost:3000/flashes/#{params[:user_info][:scenes_id]}?page=#{url_topic_id}"
-
   end
 
 end
