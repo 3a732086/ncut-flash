@@ -22,7 +22,7 @@ class AdminController < ApplicationController
 
   def click_rates  #點擊率頁面
     @users = Ctr.find_by_sql("select distinct users.id, users.name from users inner join ctrs on users.id = ctrs.user_id")
-    @courses = Course.select(:name).distinct
+    @courses = Course.select(:name, :id).order(:id).distinct
     @array1 = []
     @array2 = []
     @i = 0
