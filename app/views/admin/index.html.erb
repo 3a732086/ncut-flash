@@ -22,7 +22,7 @@
         </tr>
         </thead>
         <tbody>
-        <% @recent_log_in_students.each_with_index do  |s| %>
+        <% @recent_log_in_users.each_with_index do  |s| %>
         <tr>
           <td><span class="badge badge-success"><%= s.current_sign_in_at %></span></td>
           <td><%= s.name %></td>
