@@ -13,8 +13,8 @@ class AdminController < ApplicationController
 
 
   def user_manage
-    @users = User.all
-    @edit_user = User.find_by(params[:value])
+    @users = User.all     #搜尋所有 User
+    @edit_user = User.find_by(params[:value])  #後台按下編輯按鈕尋找特定 User
   end
 
 end
