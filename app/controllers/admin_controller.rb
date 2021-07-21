@@ -20,4 +20,23 @@ class AdminController < ApplicationController
     @user_response = User.find_by_sql("select * from users inner join user_infos on users.id = user_infos.user_id order by inserted_at desc")  #搜尋 User join UserInfo
   end
 
+  def click_rates  #點擊率頁面
+    @users = Ctr.find_by_sql("select distinct users.id, users.name from users inner join ctrs on users.id = ctrs.user_id")
+    @courses = Course.select(:name).distinct
+    @array1 = []
+    @array2 = []
+    @i = 0
+
+    @users.each_with_index do |users|
+      @array1.push(users.name)
+      @courses.each_with_index do |courses|
+        click_rates_count = Ctr.where(:user_id => users.id).where(:scenes => courses.name).count
+        @array1.push(click_rates_count)
+      end
+      @array2.push(@array1)
+      @array1 = []
+    end
+
+  end
+
 end
