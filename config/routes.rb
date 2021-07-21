@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     collection do
       get :user_manage
       get :user_response
+      get :click_rates
     end
   end
 
