@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :admin do
     collection do
       get :user_manage
+      get :user_response
     end
   end
 
