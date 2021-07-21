@@ -1,0 +1,2 @@
+module ClickRatesHelper
+end
