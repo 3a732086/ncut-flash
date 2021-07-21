@@ -26,6 +26,6 @@ Rails.application.routes.draw do
 
   resources :user
 
-  resources :click_rates
+  resources :ctrs
 
 end
