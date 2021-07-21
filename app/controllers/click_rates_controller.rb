@@ -1,2 +1,0 @@
-class ClickRatesController < ApplicationController
-end

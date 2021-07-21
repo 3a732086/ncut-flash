@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ClickRatesControllerTest < ActionDispatch::IntegrationTest
+class CtrsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
