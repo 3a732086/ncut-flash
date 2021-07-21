@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :user_infos
 
   resources :admin do
+    collection do
+      get :user_manage
+    end
   end
 
 end
