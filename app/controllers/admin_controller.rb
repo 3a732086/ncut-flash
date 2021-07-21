@@ -14,6 +14,7 @@ class AdminController < ApplicationController
 
   def user_manage
     @users = User.all
+    @edit_user = User.find_by(params[:value])
   end
 
 end
