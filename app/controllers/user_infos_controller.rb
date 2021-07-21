@@ -1,7 +1,7 @@
 class UserInfosController < ApplicationController
 
 
-  def index
+  def index  #前台檢視自己資料頁面
     @user_data = UserInfo.where(:user_id => current_user.id)
   end
 
