@@ -40,20 +40,20 @@
         <!-- Main -->
         <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
         <li class="nav-item">
-          <a href="" class="nav-link active">
+          <%= link_to admin_index_path, class: "nav-link active" do %>
             <i class="icon-home4"></i>
             <span>
               Dashboard
             </span>
-          </a>
+          <% end %>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <%= link_to user_manage_admin_index_path, class: "nav-link " do %>
             <i class="icon-user"></i>
             <span>
               用戶管理
             </span>
-          </a>
+          <% end %>
         </li>
         <li class="nav-item">
           <a href="" class="nav-link">
