@@ -12,7 +12,7 @@ class UserInfosController < ApplicationController
              scenes: params[:user_info][:scenes],
              topic: params[:user_info][:topic],
              input_data: params[:user_info][:input_data],
-             inserted_at: Time.now
+             inserted_at: Time.zone.now
    })
 
 
