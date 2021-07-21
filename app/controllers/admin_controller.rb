@@ -2,7 +2,7 @@ class AdminController < ApplicationController
   layout 'admin/layouts/admin'
 
   def index
-    @recent_log_in_users = User.order(current_sign_in_at: :desc)
+    @recent_log_in_users = User.order(current_sign_in_at: :desc)   #搜尋最近登入 User 使用 Desc 排序
 
     log_in_user = User.where(current_sign_in_at: Date.current.to_time.all_day)  #搜尋 User登入時間是否符合今天日期
     @today_log_in_users = log_in_user.count  #計算今天登入的 User數量
