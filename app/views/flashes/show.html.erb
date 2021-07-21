@@ -25,6 +25,10 @@
           </div>
         <% end %>
 
+        <%= form_for @click_rates, html: {id: "click_rates_form"} do |f| %>
+          <%= f.hidden_field :scenes, value: @course.name %>
+        <% end %>
+
       <h3 id="topic_write" class="mb-3" >默寫模式</h3>
 
       <% @course_topics.each_with_index do |ct| %>
@@ -116,4 +120,12 @@
            }
         })
     })
+
+
+    // 點擊率表單自動送出
+    $(function (){
+        $("#click_rates_form").submit()
+    })
+
+
 </script>

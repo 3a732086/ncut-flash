@@ -21,13 +21,15 @@ class FlashesController < ApplicationController
       @page = 1
     end
 
+    #將 course_topics分成一頁一題
     @first_page = 1
     @last_page = ( @count / LIMITED_QUESTION_NUMBER )
-
     @course_topics = @course_topics[ (@page - 1) * LIMITED_QUESTION_NUMBER, LIMITED_QUESTION_NUMBER]
 
 
-    @user_info = UserInfo.new
+    @user_info = UserInfo.new  #建立一個空的 UserInfo
+
+    @click_rates = Ctr.new  #建立一個空的 CTR
   end
 
 
