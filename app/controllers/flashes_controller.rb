@@ -1,6 +1,6 @@
 class FlashesController < ApplicationController
   before_action :redirect_if_not_log_in
-  before_action :redirect_if_account_is_guest
+  before_action :redirect_if_role_is_guest
 
   LIMITED_QUESTION_NUMBER = 1  #每頁顯示一個問題
 
@@ -42,7 +42,7 @@ class FlashesController < ApplicationController
     end
   end
 
-  def redirect_if_account_is_guest
+  def redirect_if_role_is_guest
     if current_user && current_user.role == 'guest'
       flash[:notice] = "你的帳號尚未開通，請稍等老師為您開通"
       redirect_to root_path
