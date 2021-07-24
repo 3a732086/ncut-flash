@@ -3,7 +3,7 @@
     <% @courses.each_with_index do |c, index| %>
       <%= link_to flash_path(c) do %>
         <button type="button" class="btn btn-outline-primary btn-lg" style="margin: 5px"><%= c.name %></button>
-        <% end  %>
+      <% end %>
     <% end %>
   </ul>
 </div>
