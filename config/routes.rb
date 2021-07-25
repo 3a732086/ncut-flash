@@ -23,6 +23,9 @@ Rails.application.routes.draw do
       get :user_response
       get :click_rates
       get :user_activity
+
+      resources :courses
+      resources :course_topics
     end
   end
 
