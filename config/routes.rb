@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get :user_manage
       get :user_response
       get :click_rates
+      get :user_activity
     end
   end
 

@@ -36,7 +36,10 @@ class AdminController < ApplicationController
       @array2.push(@array1)
       @array1 = []
     end
+  end
 
+  def user_activity
+    @users = User.where(:role => 1)
   end
 
 end
