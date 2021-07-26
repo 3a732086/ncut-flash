@@ -13,7 +13,7 @@ class CoursesController < ApplicationController
                                    inserted_at: Time.zone.now,
                                })
         if course.valid?
-            FileUtils.mkdir_p "#{Rails.public_path}/data/#{course.name}"   #新增情境時在public/data資料夾底下新增資料夾
+            FileUtils.mkdir_p "#{Rails.public_path}/data/#{course.name}" unless File.directory?("#{Rails.public_path}/data/#{course.name}")  #新增情境時在public/data資料夾底下新增資料夾
             redirect_to action: :index
             return
         end
