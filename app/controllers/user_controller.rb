@@ -2,14 +2,11 @@ class UserController < ApplicationController
 
 
   def update
-    user = User.find(params[:id])
-    if user.update(user_edit_permit)
-      flash[:notice] = "更新成功!!"
-    else
-      flash[:alert] = "發生錯誤!!"
-    end
+    user = User.find_by(id: params[:id])
 
-    redirect_to user_manage_admin_index_path
+    if user.update(user_edit_permit)
+      redirect_to user_manage_admin_index_path
+    end
   end
 
 
@@ -25,7 +22,7 @@ class UserController < ApplicationController
   private
 
   def user_edit_permit
-    params.require(:user).permit([:name, :student_class, :email, :role])
+    params.require(:user).permit([:name, :student_class, :email, :role]) #[裡面的欄位名稱是資料表裡面的欄位名稱，不是表單的名稱]
   end
 
 end

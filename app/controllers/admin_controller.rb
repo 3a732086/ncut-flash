@@ -13,8 +13,9 @@ class AdminController < ApplicationController
 
   def user_manage  #用戶管理頁面
     @users = User.all     #搜尋所有 User
-    @edit_user = User.find_by(params[:value])  #後台按下編輯按鈕尋找特定 User
+    @edit_user = User.first  #後台按下編輯按鈕尋找 User
   end
+
 
   def user_response  #學生作答紀錄
     @user_response = User.find_by_sql("select * from users inner join user_infos on users.id = user_infos.user_id order by inserted_at desc")  #搜尋 User join UserInfo

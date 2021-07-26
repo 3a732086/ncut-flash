@@ -40,7 +40,7 @@
             <td><%= user.email %></td>
             <td><%= user.role %></td>
             <td>
-              <a class="btnSelect btn btn-primary" value="<%= user.id %>" href="javascript:void(0);" data-toggle="modal" data-target="#edit_user" data-detail="<%= user.to_json %>">編輯</a>
+              <a class="btnSelect btn btn-primary"  href="javascript:void(0);" data-toggle="modal" data-target="#edit_user" data-detail="<%= user.to_json %>">編輯</a>
               <%= link_to '刪除', user_path(user), method: :delete, class: "btn btn-danger", data:{ confirm: "確定要刪除這筆資料嗎?"}%>
             </td>
           </tr>
@@ -71,7 +71,7 @@
               <%= f.label :role, "身分"%><br/>
               <%= f.text_field :role, class: "form-control", placeholder: "預設為guest 學生是student 管理員是admin", required: "required" %>
               <br/>
-              <%= f.submit "修改", class: "btn btn-info" %>
+              <%= f.submit "修改", class: "btn btn-info", data: { confirm: "是否修改此學生的資料?"} %>
             <% end %>
           </div>
         </div>
@@ -80,7 +80,22 @@
   </div>
 </div>
 
+<script>
 
+
+    $(function(){
+        $(".btnSelect.btn.btn-primary").click(function(){
+            var detail = $(this).data("detail");
+            var newURL = "/user/" + detail.id;
+
+            $("#user_edit_form").attr("action", newURL);
+            $("#user_name").val(detail.name);
+            $("#user_student_class").val(detail.student_class);
+            $("#user_email").val(detail.email);
+            $("#user_role").val(detail.role);
+        })
+    });
+</script>
 
 
 
