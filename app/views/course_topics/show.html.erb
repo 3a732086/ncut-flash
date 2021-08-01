@@ -1,0 +1,166 @@
+<% content_for :title, "課程編輯" %>
+
+<% content_for :script do %>
+    <script src="/global_assets/js/demo_pages/form_inputs.js"></script>
+<% end %>
+
+<div class="card">
+    <div class="card-body">
+        <div class="input-group mb-3">
+            <input class="form-control" type="search" placeholder="Search..." aria-label="Search" id="search">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="icon-search4"></i></span>
+            </div>
+            <button type="button" class="btn btn-success" id="btnSort"  data-toggle="modal" data-target="#new_course_topic">新增課程</button>
+        </div>
+        <div class="row sort">
+            <% @course_topics.each do |course_topics| %>
+                <div class="col-md-6 col-lg-3 mb-4 sort-card">
+                    <div class="card border-secondary custom h-100" style="border:1px solid">
+                        <div class="card-header">
+                            <h4><strong>No.<%= course_topics.number %></strong></h4>
+                        </div>
+                        <div class="card-body">
+                            <h5><p class="card-text"><%= course_topics.eng_topic %></p></h5>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <a class="button btn btn-success mb-2 mr-2" href="javascript:void(0);" data-toggle="modal" data-target="#edit_course_topic" data-detail="<%= course_topics.to_json %>">編輯</a>
+                            <%= link_to "刪除", course_topic_path(course_topics), method: :delete, class: "button btn btn-danger mb-2 mr-2", data:{ confirm: "是否要刪除此課程?"} %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<!--新增課程-->
+<div id="new_course_topic" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="padding: 48px 16px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <%= form_tag("/admin/course_topics", method: "post", multipart: true ) do %>
+                            <fieldset class="mb-3">
+                                <input type="hidden" name="course_id" value="<%= @course_id %>">
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-2">題號No.</label>
+                                    <div class="col-lg-10">
+                                        <input type="number" name="topic_id" class="form-control" placeholder="請輸入題號數字" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-2">英文題目</label>
+                                    <div class="col-lg-10">
+                                        <textarea name="eng_topic" rows="6" cols="3" class="form-control" placeholder="Please input english content" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-2">中文題目</label>
+                                    <div class="col-lg-10">
+                                        <textarea id="encodedResult" name="chi_topic" rows="6" cols="3" class="form-control" placeholder="請輸入中文內容" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-2">選擇音檔</label>
+                                    <div class="col-lg-10">
+                                        <input type="file" class="form-control-uniform-custom" name="audio" accept="audio/*">
+                                        <span class="form-text text-muted">請勿上傳超過1MB的音檔</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-2"></label>
+                                    <div class="col-lg-10">
+                                        <audio id="audio" controls style="width: 100%;">
+                                            <source id="source" src="" type="audio/ogg"/>
+                                        </audio>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary">新增
+                                    <i class="icon-paperplane ml-2"></i>
+                                </button>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--編輯課程-->
+<div id="edit_course_topic" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="padding: 48px 16px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <%= form_tag("/admin/course_topics/:id", method: "put", id: "course_topic_edit_form") do %>
+                            <fieldset class="mb-3">
+                                <input type="hidden" name="course_id" value="<%= @course_id %>">
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-2">題號No.</label>
+                                    <div class="col-lg-10">
+                                        <input type="number" id="topic_id" name="topic_id" class="form-control" placeholder="請輸入題號數字" required readonly="readonly">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-2">英文題目</label>
+                                    <div class="col-lg-10">
+                                        <textarea id="eng_topic" name="eng_topic" rows="6" cols="3" class="form-control" placeholder="Please input english content" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-2">中文題目</label>
+                                    <div class="col-lg-10">
+                                        <textarea id="chi_topic" name="chi_topic" rows="6" cols="3" class="form-control" placeholder="請輸入中文內容" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-2">選擇音檔</label>
+                                    <div class="col-lg-10">
+                                        <input type="file" class="form-control-uniform-custom" name="audio" accept="audio/*">
+                                        <span class="form-text text-muted">請勿上傳超過1MB的音檔</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-2"></label>
+                                    <div class="col-lg-10">
+                                        <audio id="audio" controls style="width: 100%;">
+                                            <source id="source" src="" type="audio/ogg"/>
+                                        </audio>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary">
+                                    修改
+                                    <i class="icon-paperplane ml-2"></i>
+                                </button>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function (){
+        $(".button.btn.btn-success.mb-2.mr-2").click(function(){
+            var detail = $(this).data("detail");
+            var newURL = "/admin/course_topics/"+detail.id
+
+            $("#course_topic_edit_form").attr("action", newURL);
+            $("#topic_id").val(detail.number);
+            $("#eng_topic").val(detail.eng_topic);
+            $("#chi_topic").val(detail.chi_topic);
+        })
+    })
+</script>

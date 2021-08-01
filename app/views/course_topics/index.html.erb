@@ -1,0 +1,35 @@
+<% content_for :title, "課程編輯" %>
+
+<% content_for :script do %>
+    <script src="/global_assets/js/demo_pages/form_inputs.js"></script>
+<% end %>
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="input-group mb-3">
+            <input class="form-control" type="search" placeholder="Search..." aria-label="Search" id="search">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="icon-search4"></i></span>
+            </div>
+            <button class="btn btn-success" id="btnSort" type="button">Sort</button>
+        </div>
+        <div class="row sort">
+            <% @courses.each do |courses| %>
+            <div class="col-md-6 col-lg-3 mb-4 sort-card">
+                <div class="card border-secondary custom h-100" style="border:1px solid">
+                    <div class="card-header">
+                        <h4><strong>No.<%= courses.id %></strong></h4>
+                    </div>
+                    <div class="card-body">
+                        <h2><strong><p class="card-text">情境名稱:<br /><%= courses.name %></p></strong></h2>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <%= link_to "編輯", course_topic_path(courses), class: "button btn btn-success mb-2 mr-2" %>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
