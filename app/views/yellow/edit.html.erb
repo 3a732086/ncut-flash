@@ -1,0 +1,65 @@
+<% content_for :title, "Yellow-Edit" %>
+
+<% content_for :script do %>
+    <script src="/global_assets/js/demo_pages/datatables_extension_buttons_print.js"></script>
+    <script src="/global_assets/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script src="/global_assets/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+    <script src="/global_assets/js/plugins/tables/datatables/extensions/select.min.js"></script>
+<% end %>
+
+<div class="row">
+    <div class="card col-lg">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">修改詞彙(黃色區塊)</h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <p class="mb-4"></p>
+            <%= form_tag("/admin/yellow/#{@yellow.id}", method: :put) do %>
+                <fieldset class="mb-3">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Verb:</label>
+                                <input type="text" name="Verb" class="form-control" placeholder="add" value="<%= @yellow.Verb %>">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Noun:</label>
+                                <input type="text" name="Noun" class="form-control" placeholder="addition" value="<%= @yellow.Noun %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Adjective:</label>
+                                <input type="text" name="Adjective" class="form-control" placeholder="additional" value="<%= @yellow.Adjective %>">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Adverb:</label>
+                                <input type="text" name="Adverb" class="form-control" placeholder="additionally" value="<%= @yellow.Adverb %>">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="Count" class="form-control" placeholder="" value="<%= @yellow.Count %>">
+                </fieldset>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">
+                        修改
+                        <i class="icon-paperplane ml-2"></i>
+                    </button>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
