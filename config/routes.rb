@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
       resources :courses
       resources :course_topics
+      resources :yellow
     end
   end
 
