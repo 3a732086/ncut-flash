@@ -25,7 +25,8 @@
             <table class="table datatable-button-print-rows" style="font-size:16px">
                 <thead>
                     <tr>
-                        <td>情境</td>
+                        <td>情境編號</td>
+                        <td>情境名稱</td>
                         <td>新增時間</td>
                         <td class="text-center">Actions</td>
                     </tr>
@@ -33,6 +34,7 @@
                 <tbody>
                 <% @courses.each do |courses| %>
                     <tr>
+                        <td><%= courses.id %></td>
                         <td><%= courses.name %></td>
                         <td><%= courses.inserted_at %></td>
                         <td class="text-center">

@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
     layout 'admin/layouts/admin'
 
     def index
-        @courses = Course.is_published #搜尋 :status = 1 的情境
+        @courses = Course.is_published.order("id") #搜尋 :status = 1 的情境
 
         @deleted_courses = Course.is_hidden  #搜尋 :status = 0 的情境
     end
