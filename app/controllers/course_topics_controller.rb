@@ -36,6 +36,15 @@ class CourseTopicsController < ApplicationController
     end
 
     def update
+        course = Course.find(params[:course_id])
+        course_name = course.name
+
+        audio = params[:audio]
+
+        if audio
+            audio_url = save_file(audio, course_name)
+        end
+        
         edit_course_topic = CourseTopic.find_by(id: params[:id])  #透過表單 action 裡面的 id 搜尋資料表中對應的課程
 
         if edit_course_topic.update(course_topic_permit)

@@ -99,7 +99,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <%= form_tag("/admin/course_topics/:id", method: "put", id: "course_topic_edit_form") do %>
+                        <%= form_tag("/admin/course_topics/:id", method: "put", id: "course_topic_edit_form", multipart: true) do %>
                             <fieldset class="mb-3">
                                 <input type="hidden" name="course_id" value="<%= @course_id %>">
                                 <div class="form-group row">
