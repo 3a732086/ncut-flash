@@ -40,7 +40,7 @@ class AdminController < ApplicationController
   end
 
   def user_activity
-    @users = User.where(:role => 1)
+    @users = User.where(:role => 1)  #只記錄學生登入情況
   end
 
 end
