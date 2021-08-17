@@ -13,7 +13,7 @@ class CoursesController < ApplicationController
                                    inserted_at: Time.zone.now,
                                })
         if course.valid?
-            dir_url = Rails.root.join("public", "data/#{course.name}")
+            dir_url = Rails.root.join("public", "data/#{course.id}")
             FileUtils.mkdir_p(dir_url) unless File.directory?(dir_url)  #新增情境時在public/data資料夾底下新增資料夾
             redirect_to action: :index
             return

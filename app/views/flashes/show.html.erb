@@ -76,6 +76,8 @@
 <script type="text/javascript">
     var x = document.getElementById("audio");
     var course_id = <%= @course.id %>
+
+
     <% if params[:page] %>
       var topic_id = <%= params[:page] %>
     <% else %>
@@ -95,7 +97,7 @@
     }
 
     function playAudio() {
-        $("audio").attr('src',"/data/FOLDER"+course_id+"/LS/PAUL/"+topic_id+".mp3");
+        $("audio").attr('src',"/data/" + course_id + "/LS/PAUL/" + topic_id + ".mp3");
         x = document.getElementById("audio");
         x.play();
     }
@@ -104,7 +106,6 @@
     function random() {
         window.location.replace("http://127.0.0.1:3000/flashes/"+course_id+"?page="+random_topic)
     }
-
 
 
     $(document).ready(function (){

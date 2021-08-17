@@ -14,12 +14,12 @@ class CourseTopicsController < ApplicationController
 
     def create
         course = Course.find(params[:course_id])
-        course_name = course.name
+        course_id = course.id
 
         audio = params[:audio]
 
         if audio
-            audio_url = save_file(audio, course_name)
+            audio_url = save_file(audio, course_id)
         end
 
         course_topic = CourseTopic.create({
@@ -37,12 +37,12 @@ class CourseTopicsController < ApplicationController
 
     def update
         course = Course.find(params[:course_id])
-        course_name = course.name
+        course_id = course.id
 
         audio = params[:audio]
 
         if audio
-            audio_url = save_file(audio, course_name)
+            audio_url = save_file(audio, course_id)
         end
         
         edit_course_topic = CourseTopic.find_by(id: params[:id])  #透過表單 action 裡面的 id 搜尋資料表中對應的課程
@@ -67,8 +67,8 @@ class CourseTopicsController < ApplicationController
         params.permit([:number, :eng_topic, :chi_topic])  #[裡面的欄位名稱是資料表裡面的欄位名稱，不是表單的名稱]
     end
 
-    def save_file(newFile, course_name)
-        dir_url = Rails.root.join('public', "data/#{course_name}/LS/KATE")  #音檔路徑位置
+    def save_file(newFile, course_id)
+        dir_url = Rails.root.join('public', "data/#{course_id}/LS/PAUL")  #音檔路徑位置
 
         FileUtils.mkdir_p(dir_url) unless File.directory?(dir_url)  #如果沒有該路徑，用mkdir_p 建立路徑， 如果路徑存在則不須建立
 
@@ -78,6 +78,6 @@ class CourseTopicsController < ApplicationController
             file.write(newFile.read)
         end
 
-        return "data/#{course_name}/LS/KATE/" + newFile.original_filename
+        return "data/#{course_id}/LS/PAUL/" + newFile.original_filename
     end
 end
